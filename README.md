@@ -1,4 +1,4 @@
-# hello world 2027
+# Hello world 2027
 proyecto introduccion al curso 2027
 
 ## To-Do list
