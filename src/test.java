@@ -18,18 +18,27 @@ public class test {
                 sc.nextLine();
                System.out.println("Descripcion de la tarea: ");
                String descripcion = sc.nextLine();
-                Tarea t =new Tarea(descripcion);
-               Tareas.add(t);
+                 String prioridad;
+                 do {
+                     System.out.println("Prioridad (alta, media o baja): ");
+                     prioridad = sc.nextLine().toLowerCase();
+                 } while (!prioridad.equals("alta")
+                         && !prioridad.equals("media")
+                         && !prioridad.equals("baja"));
+
+                 Tarea t =new Tarea(descripcion, prioridad);
+                Tareas.add(t);
                 System.out.println("Se ha añadido la tarea correctamente");
 
             } else if (opcion== 2) {
                 if (Tareas.isEmpty()){
                     System.out.println("No hay Tareas");
                 }else
-                System.out.println("Ver Tarea");
+                    System.out.println("Ver Tarea");
                 for (Tarea t: Tareas){
                     System.out.println("id:" + t.id);
                     System.out.println("Descripcion: " + t.descripcion);
+                    System.out.println("Prioridad: " + t.prioridad);
                     if (t.estado){
                         System.out.println("estado completado");
                     }else{
