@@ -22,7 +22,7 @@ public class test {
 
         do {
             // Mostramos las opciones disponibles.
-            System.out.println("1.Añadir Tarea |2. ver Tarea |3.Marcar Tarea |4.Eliminar Tarea |5.salir ");
+            System.out.println("1.Añadir Tarea |2. ver Tarea |3.Marcar Tarea |4.Eliminar Tarea |5.Filtrar por prioridad |6.salir ");
             System.out.println("Elige una opcion: ");
             opcion = sc.nextInt();
 
@@ -89,9 +89,39 @@ public class test {
                         System.out.println("Tarea Eliminada");
                     }
                 }
+            } else if (opcion==5) {
+                // Pedimos la prioridad que se quiere buscar.
+                sc.nextLine();
+                String prioridadBuscar;
+                do {
+                    System.out.println("Prioridad que quieres ver (alta, media o baja): ");
+                    prioridadBuscar = sc.nextLine().toLowerCase();
+                } while (!prioridadBuscar.equals("alta")
+                        && !prioridadBuscar.equals("media")
+                        && !prioridadBuscar.equals("baja"));
+
+                // Mostramos solo las tareas que tienen esa prioridad.
+                boolean hayTareas = false;
+                for (Tarea t : Tareas) {
+                    if (t.prioridad.equals(prioridadBuscar)) {
+                        System.out.println("id:" + t.id);
+                        System.out.println("Descripcion: " + t.descripcion);
+                        System.out.println("Prioridad: " + t.prioridad);
+                        if (t.estado) {
+                            System.out.println("estado completado");
+                        } else {
+                            System.out.println("estado no completado");
+                        }
+                        hayTareas = true;
+                    }
+                }
+
+                if (!hayTareas) {
+                    System.out.println("No hay tareas con esa prioridad");
+                }
             }
 
-        // Volvemos al menu hasta que el usuario elija la opcion 5.
-        }while(opcion !=5);
+        // Volvemos al menu hasta que el usuario elija la opcion 6.
+        }while(opcion !=6);
     }
 }
