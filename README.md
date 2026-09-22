@@ -1,21 +1,26 @@
 # Hello world 2027
-proyecto introduccion al curso 2027
+Proyecto introducción al curso 2027
 
 ## To-Do list
 
-pequeña aplicacion para gestion de tareas
+Pequeña aplicación para gestion de tareas
 
 
-## funcionalidad
+## Funcionalidades
 
-1. añadir una nueva tarea
-2. ver tareas
-3. marcar tareas
-4. eliminar tareas
+1. Añadir una nueva tarea
+2. Ver tareas
+3. Marcar tareas
+4. Eliminar tareas
+5. Filtrar tareas por prioridad
+6. Guardar tareas en archivo
     
 
 ## implementacion
 
-- se usa la **ultima version de java**
-- alamcenamiento de tareas en memoria usada `ArrayList`
+- Se usa la **ultima version de java**
+- Alamcenamiento de tareas en memoria usada `ArrayList`
 - Gestion de UI con `Printnl` y  `Scanner`
+
+## Limitaciones
+- La aplicación solo almacena las tareas en memoria, por lo que se perderán al cerrar el programa.
