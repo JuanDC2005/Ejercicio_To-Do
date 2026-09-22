@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -22,7 +25,7 @@ public class test {
 
         do {
             // Mostramos las opciones disponibles.
-            System.out.println("1.Añadir Tarea |2. ver Tarea |3.Marcar Tarea |4.Eliminar Tarea |5.Filtrar por prioridad |6.salir ");
+            System.out.println("1.Añadir Tarea |2. ver Tarea |3.Marcar Tarea |4.Eliminar Tarea |5.Filtrar por prioridad |6.Guardar tareas |7.salir ");
             System.out.println("Elige una opcion: ");
             opcion = sc.nextInt();
 
@@ -119,9 +122,27 @@ public class test {
                 if (!hayTareas) {
                     System.out.println("No hay tareas con esa prioridad");
                 }
+            } else if (opcion==6) {
+                // Guardamos todas las tareas en un archivo de texto.
+                try (PrintWriter archivo = new PrintWriter(new FileWriter("tareas.txt"))) {
+                    for (Tarea t : Tareas) {
+                        archivo.println("Id: " + t.id);
+                        archivo.println("Descripcion: " + t.descripcion);
+                        archivo.println("Prioridad: " + t.prioridad);
+                        if (t.estado) {
+                            archivo.println("Estado: completado");
+                        } else {
+                            archivo.println("Estado: no completado");
+                        }
+                        archivo.println("--------------------");
+                    }
+                    System.out.println("Tareas guardadas en tareas.txt");
+                } catch (IOException e) {
+                    System.out.println("No se han podido guardar las tareas");
+                }
             }
 
-        // Volvemos al menu hasta que el usuario elija la opcion 6.
-        }while(opcion !=6);
+        // Volvemos al menu hasta que el usuario elija la opcion 7.
+        }while(opcion !=7);
     }
 }
